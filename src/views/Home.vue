@@ -1,5 +1,11 @@
 <template>
-    <px-table  :assets="assets" />
+    <div>
+    <div class="flex justify-center">
+       <bounce-loader :loading="isLoading" :color="'#68d391'" :size="100" />
+      <px-table v-if="!isLoading" :assets="assets" />
+    </div>
+   
+  </div>
 </template>
 
 <script>
@@ -13,12 +19,31 @@ export default {
     },
     data(){
         return {
-            assets: []
+            assets: [],
+             isLoading:true
         }
     },
     created(){
-        api.getAssets().then(assets => (this.assets = assets))
-    }
+        api.getAssets()
+        .then(assets => (this.assets = assets))
+        .finally(() => (this.isLoading = false))
+    },
+
+    methods:{
+        getData(){
+            api.getAssets().then(assets => 
+            {
+                this.assets = assets
+                })
+        }
+    },
+
+    mounted(){
+        setInterval(()=>{
+            this.getData()
+        },
+        1000);
+    },
     
 }
 </script>

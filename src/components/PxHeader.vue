@@ -11,7 +11,7 @@
              <ul>
              <router-link class="font-semibold text-xl tracking-tight" to="/">Home</router-link> |
               <router-link class="font-semibold text-xl tracking-tight" to="/about">About</router-link> |
-              <router-link  class="font-semibold text-xl tracking-tight" to="/about">Contact</router-link>
+              <router-link  class="font-semibold text-xl tracking-tight" to="/contact">Contact</router-link>
         </ul>
           </div>
         </div>
